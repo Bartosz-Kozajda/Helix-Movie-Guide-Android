@@ -1,18 +1,21 @@
 package com.androidmess.helix.discover.model.data
 
+import android.os.Parcelable
 import com.androidmess.helix.common.model.data.Movie
+import kotlinx.android.parcel.Parcelize
 
 /**
  * View model discover screen.
  *
  * Contains mapper from model->view model conversion.
  */
-data class DiscoverMovieViewModel(val id: Int, val title: String, val imagePath: String) {
+@Parcelize
+data class MovieViewData(val id: Int, val title: String, val imagePath: String) : Parcelable {
 
     companion object Mapper {
-        fun fromMovie(movie: Movie): DiscoverMovieViewModel {
+        fun fromMovie(movie: Movie): MovieViewData {
             val imagePath = "https://image.tmdb.org/t/p/w500${movie.posterPath}"
-            return DiscoverMovieViewModel(movie.id, movie.title, imagePath)
+            return MovieViewData(movie.id, movie.title, imagePath)
         }
     }
 }

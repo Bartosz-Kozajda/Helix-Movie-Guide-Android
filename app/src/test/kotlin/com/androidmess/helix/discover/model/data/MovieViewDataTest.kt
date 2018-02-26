@@ -9,7 +9,7 @@ import org.junit.Before
 import org.junit.Test
 
 @Suppress("IllegalIdentifier", "MemberVisibilityCanPrivate")
-class DiscoverMovieViewModelTest : BaseTest() {
+class MovieViewDataTest : BaseTest() {
 
     val movie: Movie = mock()
 
@@ -22,21 +22,21 @@ class DiscoverMovieViewModelTest : BaseTest() {
 
     @Test
     fun `Should have the same id as model`() {
-        val movieViewModel = DiscoverMovieViewModel.fromMovie(movie)
+        val movieViewModel = MovieViewData.fromMovie(movie)
 
         movieViewModel.id shouldEqual movie.id
     }
 
     @Test
     fun `Should have the same title as model`() {
-        val movieViewModel = DiscoverMovieViewModel.fromMovie(movie)
+        val movieViewModel = MovieViewData.fromMovie(movie)
 
         movieViewModel.title shouldEqual movie.title
     }
 
     @Test
     fun `Should have full image path from model's poster path`() {
-        val movieViewModel = DiscoverMovieViewModel.fromMovie(movie)
+        val movieViewModel = MovieViewData.fromMovie(movie)
 
         movieViewModel.imagePath shouldEqual "https://image.tmdb.org/t/p/w500${movie.posterPath}"
     }
