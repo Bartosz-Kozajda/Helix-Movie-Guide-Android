@@ -3,6 +3,7 @@ package com.androidmess.helix.movie.view
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import com.androidmess.helix.BR
 import com.androidmess.helix.R
 import com.androidmess.helix.common.activity.CompositeAppCompatActivity
 import com.androidmess.helix.common.databinding.DataBindingActivityPlugin
@@ -18,20 +19,22 @@ class MovieDetailsActivity : CompositeAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
-        setupDataBinding()
+        val movie = intent.extras.getParcelable<MovieViewData>(INTENT_MOVIE_DETAILS)
+        setupDataBinding(movie)
         super.onCreate(savedInstanceState)
-        viewModel.startFetchingData()
+        viewModel.startFetchingMovie(movie)
     }
 
-    private fun setupDataBinding() {
+    private fun setupDataBinding(movie: MovieViewData) {
         val plugin = DataBindingActivityPlugin(this, viewModel, R.layout.activity_movie_details)
+        plugin.addBinding(BR.movie, movie)
         registerPlugin(plugin)
     }
 }
 
 private const val INTENT_MOVIE_DETAILS = "INTENT_MOVIE_DETAILS";
 
-fun Activity.MovieDetailsIntent(movieViewData: MovieViewData): Intent {
+fun Activity.movieDetailsIntent(movieViewData: MovieViewData): Intent {
     return Intent(this, MovieDetailsActivity::class.java).apply {
         putExtra(INTENT_MOVIE_DETAILS, movieViewData)
     }

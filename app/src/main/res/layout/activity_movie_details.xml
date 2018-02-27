@@ -10,13 +10,41 @@
         <import type="android.view.View" />
 
         <variable
-            name="viewModel"
-            type="com.androidmess.helix.movie.viewmodel.MovieDetailsViewModel" />
+            name="movie"
+            type="com.androidmess.helix.discover.model.data.MovieViewData" />
     </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@null">
+
+        <ImageView
+            android:id="@+id/movieDetailsBackgroundImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:imageUrl="@{movie.imagePath}"
+            bind:srcCompat="@color/movie_details_background_color" />
+
+        <TextView
+            android:id="@+id/movieDetailsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/movie_details_title_background_color"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:padding="16dp"
+            android:text="@{movie.title}"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:textColor="@color/movie_details_text_color"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Some movie title" />
 
     </android.support.constraint.ConstraintLayout>
 

@@ -8,7 +8,7 @@ import com.androidmess.helix.common.activity.CompositeAppCompatActivity
 import com.androidmess.helix.common.databinding.DataBindingActivityPlugin
 import com.androidmess.helix.common.ui.recyclerview.RecyclerViewOnScrolledToBottomDetector
 import com.androidmess.helix.discover.presentation.DiscoverViewModel
-import com.androidmess.helix.movie.view.MovieDetailsIntent
+import com.androidmess.helix.movie.view.movieDetailsIntent
 import com.jakewharton.rxbinding2.support.v7.widget.scrollEvents
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_discover.*
@@ -45,7 +45,7 @@ class DiscoverActivity : CompositeAppCompatActivity() {
 
     private fun setupAdapter() {
         dataAdapter.onMovieClickListener = { movie ->
-            startActivity(MovieDetailsIntent(movie))
+            startActivity(movieDetailsIntent(movie))
         }
     }
 
