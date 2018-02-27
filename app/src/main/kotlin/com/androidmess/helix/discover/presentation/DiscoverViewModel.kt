@@ -5,7 +5,7 @@ import android.databinding.ObservableBoolean
 import com.androidmess.helix.common.databinding.extensions.addOnPropertyChanged
 import com.androidmess.helix.common.model.data.MovieResult
 import com.androidmess.helix.common.rx.SchedulersInjector
-import com.androidmess.helix.discover.model.data.MovieViewData
+import com.androidmess.helix.movie.view.data.MovieViewData
 import com.androidmess.helix.discover.usecase.GetDiscoverMoviesUseCase
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable

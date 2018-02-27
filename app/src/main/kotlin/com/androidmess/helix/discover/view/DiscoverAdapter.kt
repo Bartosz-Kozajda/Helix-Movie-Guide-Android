@@ -7,7 +7,7 @@ import com.androidmess.helix.R
 import com.androidmess.helix.common.ui.recyclerview.RecyclerViewItemSizeCalculator
 import com.androidmess.helix.common.ui.view.inflate
 import com.androidmess.helix.databinding.DiscoverListItemBinding
-import com.androidmess.helix.discover.model.data.MovieViewData
+import com.androidmess.helix.movie.view.data.MovieViewData
 
 class DiscoverAdapter(private val itemSizeCalculator: RecyclerViewItemSizeCalculator)
     : RecyclerView.Adapter<DiscoverAdapter.ViewHolder>() {

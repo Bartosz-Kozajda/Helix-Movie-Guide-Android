@@ -7,7 +7,7 @@ import io.reactivex.Observable
 import retrofit2.Retrofit
 
 // FIXME Implement cache
-class RetrofitDiscoverRepository(retrofit: Retrofit, val apiKey: String) : Repository.Discover {
+class RetrofitDiscoverRepository(retrofit: Retrofit, private val apiKey: String) : Repository.Discover {
 
     private val service: RetrofitDiscoverService = retrofit.create(RetrofitDiscoverService::class.java)
 

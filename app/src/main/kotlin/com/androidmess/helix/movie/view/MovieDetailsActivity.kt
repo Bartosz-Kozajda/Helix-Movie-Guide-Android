@@ -3,11 +3,12 @@ package com.androidmess.helix.movie.view
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import com.androidmess.helix.BR
 import com.androidmess.helix.R
 import com.androidmess.helix.common.activity.CompositeAppCompatActivity
 import com.androidmess.helix.common.databinding.DataBindingActivityPlugin
-import com.androidmess.helix.discover.model.data.MovieViewData
+import com.androidmess.helix.movie.view.data.MovieViewData
 import com.androidmess.helix.movie.viewmodel.MovieDetailsViewModel
 import dagger.android.AndroidInjection
 import javax.inject.Inject
@@ -23,6 +24,9 @@ class MovieDetailsActivity : CompositeAppCompatActivity() {
         setupDataBinding(movie)
         super.onCreate(savedInstanceState)
         viewModel.startFetchingMovie(movie)
+
+        // FIXME temp display
+        viewModel.data.subscribe({ Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show() })
     }
 
     private fun setupDataBinding(movie: MovieViewData) {
@@ -32,7 +36,7 @@ class MovieDetailsActivity : CompositeAppCompatActivity() {
     }
 }
 
-private const val INTENT_MOVIE_DETAILS = "INTENT_MOVIE_DETAILS";
+private const val INTENT_MOVIE_DETAILS = "INTENT_MOVIE_DETAILS"
 
 fun Activity.movieDetailsIntent(movieViewData: MovieViewData): Intent {
     return Intent(this, MovieDetailsActivity::class.java).apply {
